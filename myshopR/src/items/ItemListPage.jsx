@@ -1,32 +1,59 @@
+import { Table } from 'react-bootstrap';
+
 const ItemListPage = () => {
     const items = [
-        { id: 1, name: "Item 1", price: 100 },
-        { id: 2, name: "Item 2", price: 200 },
-        { id: 3, name: "Item 3", price: 300 }
+        {
+            ItemId: 1,
+            Name: "Fried Chicken Leg",
+            Price: 20,
+            Description: "Crispy and succulent chicken leg that is deep-fried to perfection.",
+            ImageUrl: "/images/chickenleg.jpg"
+        },
+        {
+            ItemId: 2,
+            Name: "Fish and Chips",
+            Price: 180,
+            Description: "Classic British dish featuring battered and deep-fried fish served with thick-cut fried potatoes.",
+            ImageUrl: "/images/fishandchips.jpg"
+        }
     ];
+        console.log("ItemListPage kjører", items);
 
     return (
         <div>
             <h1>Items</h1>
 
-            <table>
+            <Table striped bordered hover>
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Price</th>
+                        <th>Descriptions</th>
+                        <th>Images</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    {items.map((item) => (
-                        <tr key={item.id}>
-                            <td>{item.name}</td>
-                            <td>{item.price}</td>
+                    {items.map(item => (
+                        <tr key={item.ItemId}>
+                            <td>{item.ItemId}</td>
+                            <td>{item.Name}</td>
+                            <td>{item.Price} NOK</td>
+                            <td>{item.Description}</td>
+                            <td>
+                                <img
+                                    src={item.ImageUrl}
+                                    alt={item.Name}
+                                    width="120"
+                                />
+                            </td>
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </Table>
         </div>
+        
     );
 };
 
